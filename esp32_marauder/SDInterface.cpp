@@ -20,6 +20,11 @@ bool SDInterface::initSD() {
 
   delay(10);
   
+#define SCK_PIN 36
+#define MISO_PIN 37
+#define MOSI_PIN 35
+SPI.begin(SCK_PIN, MISO_PIN, MOSI_PIN);
+
   if (!SD.begin(SD_CS)) {
     Serial.println(F("Failed to mount SD Card"));
     this->supported = false;
